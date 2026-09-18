@@ -148,9 +148,7 @@ class _DetailsPageState extends State<DetailsPage>
                 ),
               ],
             ),
-            Hero(
-              tag: 'pokemon-sprite-${_pokemon.id}',
-              child: SizedBox(
+            SizedBox(
                 height: 170,
                 child: _pokemon.spriteUrl.isEmpty
                     ? const Icon(Icons.image_not_supported,
@@ -168,7 +166,6 @@ class _DetailsPageState extends State<DetailsPage>
                         ),
                       ),
               ),
-            ),
             const SizedBox(height: 8),
             Text(
               (_pokemon.namePt ?? _pokemon.displayName),

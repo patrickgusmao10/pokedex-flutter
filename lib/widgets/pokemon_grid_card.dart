@@ -53,9 +53,7 @@ class PokemonGridCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Hero(
-                      tag: 'pokemon-sprite-${pokemon.id}',
-                      child: Container(
+                    Container(
                         height: 84,
                         alignment: Alignment.center,
                         child: pokemon.spriteUrl.isEmpty
@@ -84,7 +82,6 @@ class PokemonGridCard extends StatelessWidget {
                                 ),
                               ),
                       ),
-                    ),
                     const SizedBox(height: 8),
                     Text(
                       pokemon.displayName,
