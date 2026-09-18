@@ -7,9 +7,9 @@ Uma Pokédex responsiva desenvolvida em **Flutter**, com busca, filtros e inform
 [![PokéAPI](https://img.shields.io/badge/API-Pok%C3%A9API-EF5350)](https://pokeapi.co/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## 🎮 Teste o aplicativo
+## ⚡ Teste o aplicativo
 
-### [▶️ Abrir a Pokédex no navegador](https://patrickgusmao10.github.io/pokedex-flutter/)
+### [🔴 Abrir a Pokédex no navegador](https://patrickgusmao10.github.io/pokedex-flutter/)
 
 > O link ficará disponível depois que este repositório for publicado como `pokedex-flutter` e o GitHub Pages for ativado. O deploy é automático pelo workflow incluído no projeto.
 
