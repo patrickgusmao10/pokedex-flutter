@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../models/pokemon.dart';
@@ -92,12 +91,16 @@ class _EvolutionCard extends StatelessWidget {
                 color: Colors.white.withValues(alpha: 0.5),
                 shape: BoxShape.circle,
               ),
-              child: CachedNetworkImage(
-                imageUrl: node.spriteUrl,
+              child: Image.network(
+                node.spriteUrl,
                 fit: BoxFit.contain,
-                placeholder: (_, _) =>
-                    const Center(child: CircularProgressIndicator(strokeWidth: 2)),
-                errorWidget: (_, _, _) => const Icon(Icons.image_not_supported),
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return const Center(
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  );
+                },
+                errorBuilder: (_, _, _) => const Icon(Icons.image_not_supported),
               ),
             ),
             const SizedBox(height: 4),

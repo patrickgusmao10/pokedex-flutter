@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../models/pokemon.dart';
@@ -59,24 +58,26 @@ class PokemonGridCard extends StatelessWidget {
                         child: pokemon.spriteUrl.isEmpty
                             ? const Icon(Icons.image_not_supported,
                                 color: Colors.white70, size: 40)
-                            : CachedNetworkImage(
-                                imageUrl: pokemon.spriteUrl,
+                            : Image.network(
+                                pokemon.spriteUrl,
                                 fit: BoxFit.contain,
-                                fadeInDuration: const Duration(milliseconds: 200),
-                                placeholder: (_, _) => const SizedBox(
-                                  height: 84,
-                                  child: Center(
-                                    child: SizedBox(
-                                      width: 22,
-                                      height: 22,
-                                      child: CircularProgressIndicator(
-                                        strokeWidth: 2,
-                                        color: Colors.white70,
+                                loadingBuilder: (context, child, loadingProgress) {
+                                  if (loadingProgress == null) return child;
+                                  return const SizedBox(
+                                    height: 84,
+                                    child: Center(
+                                      child: SizedBox(
+                                        width: 22,
+                                        height: 22,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                          color: Colors.white70,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                                errorWidget: (_, _, _) => const Icon(
+                                  );
+                                },
+                                errorBuilder: (_, _, _) => const Icon(
                                   Icons.image_not_supported,
                                   color: Colors.white70,
                                 ),

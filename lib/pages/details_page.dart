@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -153,13 +152,16 @@ class _DetailsPageState extends State<DetailsPage>
                 child: _pokemon.spriteUrl.isEmpty
                     ? const Icon(Icons.image_not_supported,
                         color: Colors.white70, size: 80)
-                    : CachedNetworkImage(
-                        imageUrl: _pokemon.spriteUrl,
+                    : Image.network(
+                        _pokemon.spriteUrl,
                         fit: BoxFit.contain,
-                        placeholder: (_, _) => const Center(
-                          child: CircularProgressIndicator(color: Colors.white70),
-                        ),
-                        errorWidget: (_, _, _) => const Icon(
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return const Center(
+                            child: CircularProgressIndicator(color: Colors.white70),
+                          );
+                        },
+                        errorBuilder: (_, _, _) => const Icon(
                           Icons.image_not_supported,
                           color: Colors.white70,
                           size: 80,
